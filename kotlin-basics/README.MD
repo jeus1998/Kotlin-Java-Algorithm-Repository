@@ -90,6 +90,130 @@ Any의 주요 특징
 - non-null: Any는 null 값을 포함할 수 없음. null을 허용하려면 Any?를 사용해야 함.
 ```
 
+## 3. 조건문 - if 표현식
+
+```kotlin
+// Practice3.kt 파일
+
+fun main() {
+    val score = 85
+
+    // 기본적인 if-else
+    if (score >= 90) {
+        println("A등급")
+    } else if (score >= 80) {
+        println("B등급")
+    } else {
+        println("C등급")
+    }
+
+    // if를 표현식으로 사용 (값 반환)
+    val grade = if (score >= 90) "A" else if (score >= 80) "B" else "C"
+    println("등급: $grade")
+
+    // 한 줄로 작성 (삼항 연산자 대체)
+    val passed = if (score >= 60) "합격" else "불합격"
+    println("결과: $passed")
+
+    // 블록을 사용한 if 표현식
+    val message = if (score >= 80) {
+        println("축하합니다!")
+        "우수한 성적입니다"  // 마지막 줄이 반환값
+    } else {
+        println("더 노력하세요!")
+        "보통 성적입니다"
+    }
+    println("메시지: $message")
+
+    test()
+}
+
+// 함수에서 if 표현식 사용
+fun getGrade(score: Int) = if (score >= 90) "A" else if (score >= 80) "B" else "C"
+
+fun test() {
+    println("함수에서 등급: ${getGrade(95)}")
+}
+```
+
+## 4. when 표현식
+```text
+when은 Java의 switch와 유사하지만 더 강력하고 유연한 조건문입니다.
+```
+- 다양한 조건 지원
+- 값 반환 가능
+- break 불필요
+
+```kotlin
+// Practice4.kt 파일
+fun main() {
+    val x = 5
+    // 기본 when 사용
+    when (x) {
+        1 -> println("x는 1")
+        2 -> println("x는 2")
+        3, 4 -> println("x는 3 또는 4")
+        5 -> println("x는 5")
+        else -> println("x는 그 외의 값")
+    }
+
+    val day = 3
+    // when을 표현식으로 사용
+    val dayName = when (day) {
+        1 -> "월요일"
+        2 -> "화요일"
+        3 -> "수요일"
+        4 -> "목요일"
+        5 -> "금요일"
+        6, 7 -> "주말"
+        else -> "잘못된 날짜"
+    }
+    println("오늘은 $dayName")
+
+    val score = 85
+    // 범위 연산자 사용
+    val grade = when (score) {
+        in 90..100 -> "A"
+        in 80..89 -> "B"
+        in 70..79 -> "C"
+        in 60..69 -> "D"
+        else -> "F"
+    }
+    println("점수 $score -> 등급 $grade")
+
+    // 조건식 사용 (인자 없는 when)
+    val temperature = 25
+    val weather = when {
+        temperature < 0 -> "매우 추움"
+        temperature < 10 -> "추움"
+        temperature < 20 -> "선선함"
+        temperature < 30 -> "따뜻함"
+        else -> "더움"
+    }
+    println("온도 $temperature°C -> $weather")
+
+    // 타입 체크
+    val obj: Any = "Hello"
+    when (obj) {
+        is String -> println("문자열이고 길이는 ${obj.length}")
+        is Int -> println("정수입니다")
+        is Double -> println("실수입니다")
+        else -> println("알 수 없는 타입")
+    }
+
+    println(checkType("Kotlin"))
+}
+
+// 함수와 함께 사용
+fun checkType(x: Any) = when (x) {
+    is String -> "문자열"
+    is Int -> "정수"
+    is Boolean -> "불린"
+    else -> "알 수 없음"
+}
+```
+
+
 
 
 
