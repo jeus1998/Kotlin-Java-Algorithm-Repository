@@ -212,8 +212,161 @@ fun checkType(x: Any) = when (x) {
     else -> "알 수 없음"
 }
 ```
+## 5. for 반목문
 
+```text
+Kotlin의 for 반복문은 주로 범위나 컬렉션을 순회할 때 사용합니다.
+```
+- `in` 연산자로 순회
+- 범위 연산자: `..`, `downTo`, `step`
 
+```kotlin
+// Practice5.kt 파일
+fun main() {
+    // 배열 순회
+    val items = arrayOf("사과", "바나나", "오렌지")
+    println("=== 배열 순회 ===")
+    for (item in items) {
+        println(item)
+    }
+
+    // 인덱스와 함께 순회
+    println("\n=== 인덱스와 함께 ===")
+    for (index in items.indices) {
+        println("$index: ${items[index]}")
+    }
+
+    // withIndex() 사용
+    println("\n=== withIndex() ===")
+    for ((index, value) in items.withIndex()) {
+        println("$index: $value")
+    }
+
+    // 범위 순회 (1부터 5까지)
+    println("\n=== 1..5 범위 ===")
+    for (i in 1..5) {
+        print("$i ")
+    }
+    println()
+
+    // until 사용 (1부터 4까지, 5 제외)
+    println("\n=== 1 until 5 ===")
+    for (i in 1 until 5) {
+        print("$i ")
+    }
+    println()
+
+    // step 사용 (2씩 증가)
+    println("\n=== 0..10 step 2 ===")
+    for (i in 0..10 step 2) {
+        print("$i ")
+    }
+    println()
+
+    // downTo 사용 (감소)
+    println("\n=== 10 downTo 1 ===")
+    for (i in 10 downTo 1) {
+        print("$i ")
+    }
+    println()
+
+    // 감소하면서 step
+    println("\n=== 10 downTo 1 step 2 ===")
+    for (i in 10 downTo 1 step 2) {
+        print("$i ")
+    }
+    println()
+
+    // List 순회
+    val list = listOf("월", "화", "수", "목", "금")
+    println("\n=== List 순회 ===")
+    for (day in list) {
+        println("$day 요일")
+    }
+
+    // 문자열 순회
+    println("\n=== 문자열 순회 ===")
+    for (char in "Kotlin") {
+        print("$char ")
+    }
+    println()
+}
+```
+
+## 6. while 반목문
+
+```text
+Kotlin의 while과 do-while은 Java와 유사하게 동작합니다.
+```
+- `while`: 조건을 먼저 확인
+- `do-while`: 최소 한 번 실행 후 조건 확인
+
+```kotlin
+// Practice6.kt 파일
+fun main() {
+    // 기본 while 문
+    println("=== while 문 ===")
+    var count = 1
+    while (count <= 5) {
+        println("카운트: $count")
+        count++
+    }
+
+    // 배열과 while 문
+    println("\n=== 배열과 while ===")
+    val items = Array(5) { i -> (i + 1) * 10 }  // [10, 20, 30, 40, 50]
+    var index = 0
+    while (index < items.size) {
+        println("items[$index] = ${items[index]}")
+        index++
+    }
+
+    // do-while 문 (최소 한 번은 실행)
+    println("\n=== do-while 문 ===")
+    var num = 6
+    do {
+        println("num = $num (최소 한 번은 실행됨)")
+        num++
+    } while (num <= 5)  // 조건이 false여도 한 번은 실행됨
+
+    // 무한 루프와 break
+    println("\n=== break 사용 ===")
+    var counter = 0
+    while (true) {
+        if (counter >= 3) {
+            println("3에 도달하여 종료")
+            break
+        }
+        println("무한 루프 카운터: $counter")
+        counter++
+    }
+
+    // continue 사용
+    println("\n=== continue 사용 ===")
+    var i = 0
+    while (i < 10) {
+        i++
+        if (i % 2 == 0) {
+            continue  // 짝수는 건너뛰기
+        }
+        print("$i ")  // 홀수만 출력
+    }
+    println()
+
+    // 중첩 while
+    println("\n=== 중첩 while (구구단 일부) ===")
+    var x = 2
+    while (x <= 4) {
+        var y = 1
+        while (y <= 3) {
+            println("$x × $y = ${x * y}")
+            y++
+        }
+        println()
+        x++
+    }
+}
+```
 
 
 
