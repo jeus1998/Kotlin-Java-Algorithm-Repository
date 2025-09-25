@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     val score = 85
     // 기본적인 if-else

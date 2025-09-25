@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     val x = 5
     // 기본 when 사용

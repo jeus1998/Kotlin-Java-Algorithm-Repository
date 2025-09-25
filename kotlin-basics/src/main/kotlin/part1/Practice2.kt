@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     // Nullable 변수 선언
     var nullableName: String? = null

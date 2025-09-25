@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     // 배열 순회
     val items = arrayOf("사과", "바나나", "오렌지")

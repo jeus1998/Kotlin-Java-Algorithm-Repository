@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     // 기본 while 문
     println("=== while 문 ===")

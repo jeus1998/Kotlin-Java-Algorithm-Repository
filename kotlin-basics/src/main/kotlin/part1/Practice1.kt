@@ -1,3 +1,5 @@
+package part1
+
 fun main() {
     // val - 읽기 전용 변수
     val name: String = "배제우"
