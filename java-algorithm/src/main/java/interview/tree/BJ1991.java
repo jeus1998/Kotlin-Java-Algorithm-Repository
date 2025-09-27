@@ -8,7 +8,7 @@ package interview.tree;
  */
 import java.io.*;
 import java.util.*;
-public class BOJ1991 {
+public class BJ1991 {
 	static final int [][] binaryTree = new int [26][2];
 	static final StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) {
