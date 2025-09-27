@@ -1,11 +1,12 @@
 package interview.sort;
 
 /**
- * 선택 정렬 구현(Selection Sort)
- * 시간 복잡도: O(N^2)
+ * 선택 정렬 구현(Selection Sort) <br>
+ * - 시간 복잡도: O(N^2) <br>
+ * - 가장 작은 원소를 찾아서 앞으로 보내는 방식
  */
 import java.util.*;
-public class BasicSort {
+public class SelectionSort {
 	public static void main(String[] args) {
 		int[] array = Elements.copy();
 		for(int i = 0; i < array.length; i++) {
