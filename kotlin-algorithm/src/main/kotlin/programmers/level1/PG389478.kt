@@ -7,51 +7,29 @@ package programmers.level1
  * - 2025-09-26
  */
 class PG389478 {
-    companion object {
-        // primitive type cant late init
-        var answer = 1
-        var size = 0
-        lateinit var map: Array<IntArray>
-        var x = 0
-        var y = 0
+    private companion object {
+        var answer = 0
+    }
+    fun reset() {
+        answer = 0
     }
     fun solution(n: Int, w: Int, num: Int): Int {
-        init(n = n, w = w, num = num)
-        core(n)
+        core(n, w, num)
         return answer
     }
-    private fun core(n: Int) {
-        for(i in x + 1 until size) {
-            if(map[i][y] <= n) answer++
+    private fun core(n: Int, w: Int, num: Int) {
+        var cur = num
+        while(cur <= n) {
+            answer++
+            if(cur % w == 0) cur++
+            else cur += (w - (cur % w)) * 2 + 1
         }
-    }
-    private fun init(n: Int, w: Int, num: Int) {
-        size = (n / w) + if (n % w == 0) 0 else 1
-        map = Array(size) { IntArray(w) }
-        var index = 1
-        for(i in 0 until size) {
-            if(i % 2 == 0) {
-                for(j in 0 until w) {
-                    map[i][j] = index++
-                    find(i, j, num)
-                }
-                continue
-            }
-            for(j in w - 1 downTo 0) {
-                map[i][j] = index++
-                find(i, j, num)
-            }
-        }
-    }
-    private fun find(i: Int, j: Int, num: Int) {
-        if(map[i][j] != num) return
-        x = i
-        y = j
     }
 }
 
 fun main() {
     val sol = PG389478()
     println(sol.solution(22, 6, 8)) // 3
+    sol.reset()
     println(sol.solution(13, 3, 6)) // 4
 }

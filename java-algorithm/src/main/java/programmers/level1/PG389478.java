@@ -7,44 +7,16 @@ package programmers.level1;
  * - 2025-09-26
  */
 public class PG389478 {
-	static int answer = 1;
-	static int size;
-	static int [][] map;
-	static int x, y;
+	private static int answer = 0;
 	public int solution(int n, int w, int num) {
-		init(n, w, num);
-		core(n);
+		core(n, w, num);
 		return answer;
 	}
-	// 상자 개수 찾기
-	static void core(int n) {
-		for(int i = x + 1; i < size; i++) {
-			if(map[i][y] <= n) answer++;
+	private static void core(int n, int w, int num) {
+		while (num <= n) {
+			answer++;
+			if(num % w == 0) num++;
+			else num += (w - num % w) * 2 + 1;
 		}
-	}
-	static void init(int n, int w, int num) {
-		// 높이 계산
-		size = (n / w) + (n % w == 0 ? 0 : 1);
-		map = new int [size][w];
-		// 상자 채우기
-		int index = 1;
-		for(int i = 0; i < size; i++) {
-			if(i % 2 == 0) {
-				for(int j = 0; j < w; j++) {
-					map[i][j] = index++;
-					find(i, j, num);
-				}
-				continue;
-			}
-			for(int j = w - 1; j >= 0; j--) {
-				map[i][j] = index++;
-				find(i, j, num);
-			}
-		}
-	}
-	static void find(int i, int j, int num) {
-		if(map[i][j] != num) return;
-		x = i;
-		y = j;
 	}
 }
